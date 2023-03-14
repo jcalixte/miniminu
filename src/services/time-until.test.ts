@@ -6,6 +6,7 @@ const noTime = () => ({
   hours: 0,
   months: 0,
   seconds: 0,
+  minutes: 0,
   years: 0,
 })
 
@@ -27,6 +28,7 @@ describe("time until", () => {
       months: 0,
       days: 0,
       hours: 0,
+      minutes: 0,
       seconds: 0,
     })
   })
@@ -36,11 +38,12 @@ describe("time until", () => {
     vi.setSystemTime(fakeNow)
 
     expect(timeUntil("2024-02-12T19:34:22.200Z")).toStrictEqual({
+      years: 0,
+      months: 10,
       days: 30,
       hours: 10,
-      months: 10,
+      minutes: 9,
       seconds: 2062,
-      years: 0,
     })
   })
 
@@ -61,6 +64,7 @@ describe("has passed", () => {
         months: 0,
         days: 0,
         hours: 0,
+        minutes: 0,
         seconds: 1,
       })
     ).toBeFalsy()

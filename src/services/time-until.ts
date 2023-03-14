@@ -5,6 +5,7 @@ export interface TimeUntilReturn {
   months: number
   days: number
   hours: number
+  minutes: number
   seconds: number
 }
 
@@ -18,12 +19,13 @@ export const timeUntil = (target: string): TimeUntilReturn => {
       months: 0,
       days: 0,
       hours: 0,
+      minutes: 0,
       seconds: 0,
     }
   }
 
   const interval = dateTimeTarget
-    .diff(now, ["years", "months", "days", "hours", "seconds"])
+    .diff(now, ["years", "months", "days", "hours", "minutes", "seconds"])
     .toObject()
 
   return {
@@ -31,6 +33,7 @@ export const timeUntil = (target: string): TimeUntilReturn => {
     months: interval.months ? Math.round(interval.months) : 0,
     days: interval.days ? Math.round(interval.days) : 0,
     hours: interval.hours ? Math.round(interval.hours) : 0,
+    minutes: interval.minutes ? Math.round(interval.minutes) : 0,
     seconds: interval.seconds ? Math.round(interval.seconds) : 0,
   }
 }
