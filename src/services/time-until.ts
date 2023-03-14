@@ -1,6 +1,6 @@
 import { DateTime } from "luxon"
 
-interface TimeUntilReturn {
+export interface TimeUntilReturn {
   years: number
   months: number
   days: number
