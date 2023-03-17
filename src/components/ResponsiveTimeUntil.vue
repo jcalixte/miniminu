@@ -53,6 +53,26 @@ const id = setInterval(() => {
 }, 1000)
 
 onUnmounted(() => clearInterval(id))
+
+const projectTitle = ref(props.project)
+const targetInput = ref(props.target)
+const url = computed(() => {
+  const newUrl = new URL(document.location.toString())
+  if (projectTitle.value) {
+    newUrl.searchParams.set("project", projectTitle.value)
+  }
+  if (targetInput.value) {
+    newUrl.searchParams.set("target", targetInput.value)
+  }
+
+  return newUrl.toString()
+})
+
+const copyUrl = () => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url.value)
+  }
+}
 </script>
 
 <template>
@@ -86,6 +106,21 @@ onUnmounted(() => clearInterval(id))
     </section>
     <section v-else>No target</section>
     <section v-if="targetDate" class="target-date">{{ targetDate }}</section>
+    <form @submit.prevent>
+      <section>
+        <div>
+          <label for="title">Title:</label>
+          <input type="text" id="title" v-model="projectTitle" />
+        </div>
+        <div>
+          <label for="target">Target date:</label>
+          <input type="date" id="target" v-model="targetInput" />
+        </div>
+      </section>
+      <div>
+        <button @click="copyUrl">copy url</button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -112,5 +147,24 @@ div.responsive-time-until {
 }
 .target-date {
   margin-bottom: 1rem;
+}
+
+form {
+  display: none;
+  padding: 1rem;
+}
+
+form section {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: auto;
+  padding: 1rem;
+}
+
+@media (min-width: 600px) {
+  form {
+    display: block;
+  }
 }
 </style>
