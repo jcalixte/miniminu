@@ -104,7 +104,7 @@ const copyUrl = () => {
         <span class="moment">seconds</span>
       </div>
     </section>
-    <section v-else>No target</section>
+    <section v-else>No target set.</section>
     <section v-if="targetDate" class="target-date">{{ targetDate }}</section>
     <form @submit.prevent>
       <section>
@@ -129,22 +129,27 @@ div.responsive-time-until {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   height: 100vh;
   width: 100vw;
 }
+
 .time {
   display: flex;
   justify-content: center;
   gap: 1rem;
 }
+
 .count {
   display: flex;
   flex-direction: column;
 }
+
 .number {
   font-size: 36px;
 }
+
 .target-date {
   margin-bottom: 1rem;
 }
@@ -157,9 +162,18 @@ form {
 form section {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   max-width: 500px;
   margin: auto;
   padding: 1rem;
+}
+
+label {
+  margin-right: 0.3rem;
+}
+
+input {
+  padding: 0.5rem;
 }
 
 @media (min-width: 600px) {
