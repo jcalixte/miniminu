@@ -88,16 +88,14 @@ const copyUrl = () => {
     <section v-else>No target set.</section>
     <section v-if="targetDate" class="target-date">{{ targetDate }}</section>
     <form @submit.prevent>
-      <section>
-        <div>
-          <label for="title">Title:</label>
-          <input type="text" id="title" v-model="projectTitle" />
-        </div>
-        <div>
-          <label for="target">Target date:</label>
-          <input type="date" id="target" v-model="targetInput" />
-        </div>
-      </section>
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" v-model="projectTitle" />
+      </div>
+      <div>
+        <label for="target">Target date:</label>
+        <input type="date" id="target" v-model="targetInput" />
+      </div>
       <div>
         <button @click="copyUrl">copy url</button>
       </div>
@@ -138,15 +136,13 @@ div.responsive-time-until {
 form {
   display: none;
   padding: 1rem;
-}
-
-form section {
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  max-width: 500px;
+  max-width: 800px;
   margin: auto;
   padding: 1rem;
+  flex-wrap: wrap;
 }
 
 label {
@@ -159,7 +155,7 @@ input {
 
 @media (min-width: 600px) {
   form {
-    display: block;
+    display: flex;
   }
 }
 </style>
