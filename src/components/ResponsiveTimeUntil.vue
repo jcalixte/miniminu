@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from "vue"
 import { timeUntil } from "../services/time-until"
+import { useTitle } from "@vueuse/core"
 
 const props = defineProps<{ project?: string; target?: string }>()
+
+if (props.project) {
+  useTitle(props.project)
+}
 
 const targetDate = computed(() =>
   props.target
