@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest"
-import { hasPassed, timeUntil } from "./time-until"
+import { hasTimePassed, timeUntil } from "./time-until"
 
 const noTime = () => ({
   days: 0,
@@ -57,9 +57,9 @@ describe("time until", () => {
 
 describe("has passed", () => {
   it("tells if the targed has passed", () => {
-    expect(hasPassed(noTime())).toBeTruthy()
+    expect(hasTimePassed(noTime())).toBeTruthy()
     expect(
-      hasPassed({
+      hasTimePassed({
         years: 0,
         months: 0,
         days: 0,
