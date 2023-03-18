@@ -38,5 +38,5 @@ export const timeUntil = (target: string): TimeUntilReturn => {
   }
 }
 
-export const hasPassed = (timeUntil: TimeUntilReturn): boolean =>
+export const hasTimePassed = (timeUntil: TimeUntilReturn): boolean =>
   Object.entries(timeUntil).every(([_, value]) => value === 0)

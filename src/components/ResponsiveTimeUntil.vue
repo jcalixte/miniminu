@@ -21,6 +21,7 @@ const targetDate = computed(() =>
 
 const {
   timeUntilTarget,
+  hasTargetPassed,
   isYearsDisplayed,
   isMonthsDisplayed,
   isDaysDisplayed,
@@ -85,8 +86,12 @@ const copyUrl = () => {
         <span class="moment">seconds</span>
       </div>
     </section>
-    <section v-else>No target set.</section>
-    <section v-if="targetDate" class="target-date">{{ targetDate }}</section>
+    <section v-else class="no-target">No target set.</section>
+    <section v-if="targetDate" class="target-date">
+      <div v-if="hasTargetPassed" class="has-target-passed">🎊</div>
+      <hr v-else />
+      {{ targetDate }}
+    </section>
     <form @submit.prevent>
       <div>
         <label for="title">Title:</label>
@@ -104,7 +109,7 @@ const copyUrl = () => {
 </template>
 
 <style scoped>
-div.responsive-time-until {
+.responsive-time-until {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -131,6 +136,14 @@ div.responsive-time-until {
 
 .target-date {
   margin-bottom: 1rem;
+}
+
+.no-target {
+  padding: 1rem;
+}
+
+.has-target-passed {
+  font-size: 72px;
 }
 
 form {

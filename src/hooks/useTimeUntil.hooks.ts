@@ -1,8 +1,11 @@
 import { ref, computed, onUnmounted, ComputedRef } from "vue"
-import { timeUntil } from "../services/time-until"
+import { hasTimePassed, timeUntil } from "../services/time-until"
 
 export const useTimeUntil = (target: ComputedRef<string | undefined>) => {
   const timeUntilTarget = target.value ? timeUntil(target.value) : null
+  const hasTargetPassed = timeUntilTarget
+    ? hasTimePassed(timeUntilTarget)
+    : false
 
   const yearsUntil = ref(timeUntilTarget?.years ?? 0)
   const monthsUntil = ref(timeUntilTarget?.months ?? 0)
@@ -46,6 +49,7 @@ export const useTimeUntil = (target: ComputedRef<string | undefined>) => {
 
   return {
     timeUntilTarget,
+    hasTargetPassed,
     isYearsDisplayed,
     isMonthsDisplayed,
     isDaysDisplayed,
