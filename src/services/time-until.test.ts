@@ -42,8 +42,8 @@ describe("time until", () => {
       months: 10,
       days: 30,
       hours: 10,
-      minutes: 9,
-      seconds: 2062,
+      minutes: 34,
+      seconds: 22,
     })
   })
 
