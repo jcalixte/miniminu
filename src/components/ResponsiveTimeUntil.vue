@@ -95,11 +95,21 @@ const copyUrl = () => {
     <form @submit.prevent>
       <div>
         <label for="title">Title:</label>
-        <input type="text" id="title" v-model="projectTitle" />
+        <input
+          type="text"
+          id="title"
+          v-model="projectTitle"
+          autocomplete="false"
+        />
       </div>
       <div>
         <label for="target">Target date:</label>
-        <input type="date" id="target" v-model="targetInput" />
+        <input
+          type="date"
+          id="target"
+          v-model="targetInput"
+          autocomplete="false"
+        />
       </div>
       <div>
         <button @click="copyUrl">copy url</button>
