@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
 import { useTitle } from "@vueuse/core"
+import { computed, ref } from "vue"
 import { useTimeUntil } from "../hooks/useTimeUntil.hooks"
 
 const props = defineProps<{ project?: string; target?: string }>()
@@ -86,7 +86,7 @@ const copyUrl = () => {
         <span class="moment">seconds</span>
       </div>
     </section>
-    <section v-else class="no-target">No target set.</section>
+    <section v-else class="no-target">Expand window to set a target.</section>
     <section v-if="targetDate" class="target-date">
       <div v-if="hasTargetPassed" class="has-target-passed">🎊</div>
       <hr v-else />
